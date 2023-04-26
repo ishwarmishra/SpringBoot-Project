@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type ="text/css">
+table,th,td{
+border:2px solid grey;
+border-collapse:collapse;
+}
+table{
+font-size:18px;
+margin:auto;
+}
+td,th{
+padding:5px u25px;
+}</style>
+</head>
+<body>
+<h1>products</h1>
+<a href="/products/add"><button>Add Products</button></a>
+<Table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Email</th>
+<th>Password</th>
+<th>Action</th>
+
+</tr>
+</thead>
+<tbody>
+<tr th:each="product:${products}">
+<td th:text=${product.id}></td>
+<td th:text=${product.Email}></td>
+<td th:text=${product.Password}></td>
+<td>
+<a th:href="'/products/update/'+${product.id}"><button>update</button></a>
+<button th:attr="onclick=|deleteConfirm('${product.id}')|">delete</button>
+</td>
+</tr>
+</tbody>
+</Table>
+<script>
+function deleteConfirm(id){
+	var confirm=window.confirm("confirm delete");
+	window.alert(id+ "deleted..");
+	if(confirm)
+		{
+		fetch('/products/delete/'+id)
+		.then(function(response){
+			return respone.json();
+		})
+		.then(function(myJson){
+			if(myJson==true)
+			window.alert("deleted..");
+			
+		});
+		}
+}
+</script>
+</body>
+</html>
+

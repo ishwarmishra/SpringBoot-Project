@@ -1,0 +1,10 @@
+package net.javaguides.sms.service.impl;
+
+import org.springframework.stereotype.Controller;
+
+import net.javaguides.sms.service.StudentService;
+
+@Controller
+public class StudentServiceImpl implements StudentService {
+
+}

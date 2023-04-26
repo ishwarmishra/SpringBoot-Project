@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        
+        <bean id="bikes" class="com.example.springFrameworkExampleObjectinjection.Category"> 
+        <property name="id" value="2"></property>
+        <property name="name" value="Bikes"/>
+        </bean>
+        
+        <bean id="car" class="com.example.springFrameworkExampleObjectinjection.Product">
+        <property name="id" value="123"/>
+        <property name="name" value="bmw e-series"/>
+        <property name="price" value="36000"/>
+        <property name="category">
+        <bean class="com.example.springFrameworkExampleObjectinjection.Category"> 
+        <property name="id" value="1"></property>
+        <property name="name" value="cars"/> 
+        </bean>
+        
+        </property>
+           
+        </bean>
+        
+        <bean id="bike" class="com.example.springFrameworkExampleObjectinjection.Product">
+        <constructor-arg name="id" value="342"/>
+        <constructor-arg name="name" value="honda cbr"/>
+        <constructor-arg name="price" value="20000"/>
+        <constructor-arg name="category" ref="bikes"/>
+         
+       </bean>
+   </beans>
